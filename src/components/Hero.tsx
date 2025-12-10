@@ -22,7 +22,7 @@ export default function Hero() {
                 >
                     {/* Main Name - Pure White */}
                     <h1 className="text-5xl sm:text-7xl md:text-9xl font-bold tracking-tighter text-white mix-blend-difference relative z-20 break-words leading-tight">
-                        MOHANAD <span className="text-primary">N.</span>
+                        MOHANAD <span className="text-primary">MALA</span>
                     </h1>
 
                     {/* Subtitle - Overlapping/Behind styled text -> Resolved by moving it BELOW cleanly */}
