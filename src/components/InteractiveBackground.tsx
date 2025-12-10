@@ -99,6 +99,22 @@ function ParticleBrain() {
                 tz -= force * 2;
             }
 
+            // KINETIC GHOST (For Mobile/Living Feel)
+            // A virtual cursor that wanders and keeps the field alive
+            const ghostX = Math.sin(time * 0.5) * (viewport.width * 0.3);
+            const ghostY = Math.cos(time * 0.3) * (viewport.height * 0.3);
+
+            const gdx = ghostX - tx;
+            const gdy = ghostY - ty;
+            const gdist = Math.sqrt(gdx * gdx + gdy * gdy);
+
+            if (gdist < 4) {
+                const gforce = (4 - gdist) * 0.5; // Softer ambient force
+                tx -= (gdx / gdist) * gforce;
+                ty -= (gdy / gdist) * gforce;
+                tz -= gforce;
+            }
+
             // Lerp current position to target for smooth transition
             positionsContext[ix] += (tx - positionsContext[ix]) * 0.05;
             positionsContext[iy] += (ty - positionsContext[iy]) * 0.05;
