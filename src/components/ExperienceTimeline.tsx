@@ -74,13 +74,13 @@ export default function ExperienceTimeline() {
                             whileHover={{ scale: 1.02, borderColor: "rgba(0, 255, 157, 0.5)" }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => setSelectedExp(exp)}
-                            className="holo-card flex items-center justify-between group cursor-pointer"
+                            className="holo-card flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-0 group cursor-pointer"
                         >
-                            <div>
-                                <h3 className="text-2xl font-bold text-white group-hover:text-primary transition-colors">{exp.role}</h3>
-                                <p className="text-text-muted font-mono">{exp.company}</p>
+                            <div className="w-full md:w-auto">
+                                <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-primary transition-colors">{exp.role}</h3>
+                                <p className="text-sm md:text-base text-text-muted font-mono">{exp.company}</p>
                             </div>
-                            <span className="text-4xl font-bold text-white/5 group-hover:text-white/20 transition-colors">{exp.year}</span>
+                            <span className="text-3xl md:text-4xl font-bold text-white/5 group-hover:text-white/20 transition-colors self-end md:self-auto">{exp.year}</span>
                         </motion.div>
                     ))}
                 </div>

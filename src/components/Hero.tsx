@@ -18,16 +18,16 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, ease: "easeOut" }}
-                    className="relative inline-block"
+                    className="relative inline-block px-4"
                 >
                     {/* Main Name - Pure White */}
-                    <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white mix-blend-difference relative z-20">
+                    <h1 className="text-5xl sm:text-7xl md:text-9xl font-bold tracking-tighter text-white mix-blend-difference relative z-20 break-words leading-tight">
                         MOHANAD <span className="text-primary">N.</span>
                     </h1>
 
                     {/* Subtitle - Overlapping/Behind styled text -> Resolved by moving it BELOW cleanly */}
-                    <div className="md:-mt-4">
-                        <p className="text-xl md:text-3xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent tracking-[0.5em] uppercase font-bold">
+                    <div className="mt-2 md:-mt-4">
+                        <p className="text-sm sm:text-xl md:text-3xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent tracking-[0.2em] md:tracking-[0.5em] uppercase font-bold">
                             Data Engineer
                         </p>
                     </div>

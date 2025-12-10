@@ -128,7 +128,7 @@ function ParticleBrain() {
 export default function InteractiveBackground() {
     return (
         <div className="fixed inset-0 z-0 bg-black">
-            <Canvas camera={{ position: [0, 0, 12], fov: 60 }} gl={{ antialias: false, alpha: false }}>
+            <Canvas camera={{ position: [0, 0, 12], fov: 60 }} gl={{ antialias: false, alpha: false }} dpr={[1, 2]}>
                 <color attach="background" args={['#000000']} />
                 <fog attach="fog" args={['#000000', 10, 30]} />
                 <ParticleBrain />
