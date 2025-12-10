@@ -1,0 +1,462 @@
+/* Base Reset & Variables */
+:root {
+    /* Colors - Dark Modern Theme */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #121212;
+    --bg-card: #1e1e1e;
+
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-accent: #64ffda;
+    /* Teal accent */
+
+    --primary-color: #64ffda;
+    --secondary-color: #ccd6f6;
+
+    --transition-speed: 0.3s;
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --container-width: 1200px;
+    --nav-height: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-primary);
+    /* Fallback/Base color */
+}
+
+body {
+    background-color: transparent;
+    /* Changed from var(--bg-primary) for 3D visibility */
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-speed);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Utilities */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section {
+    padding: 100px 0;
+    position: relative;
+    /* Ensure z-index works contextually if needed */
+    z-index: 1;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+.btn:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--bg-primary);
+}
+
+.btn-primary:hover {
+    background-color: #4cd6b3;
+    /* Slightly darker teal */
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Navigation Styles */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background-color: rgba(10, 10, 10, 0.85);
+    /* Glassmorphism background */
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links li a {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.nav-links li a:hover {
+    color: var(--primary-color);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--text-primary);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hero Section Styles */
+.hero {
+    position: relative;
+    /* For containment of absolute 3D canvas */
+    overflow: hidden;
+    /* Prevent scrollbars if canvas slightly overflows */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: var(--nav-height);
+    /* Account for fixed header */
+}
+
+.hero-container {
+    max-width: 1000px;
+    /* Slightly tighter for hero text */
+}
+
+.hero-intro {
+    color: var(--primary-color);
+    font-family: var(--font-body);
+    /* Usually mono styling looks cool here too, keeping standard for now */
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.hero-name,
+.hero-subtitle {
+    font-size: clamp(40px, 8vw, 80px);
+    /* Responsive typography */
+    margin: 0;
+    line-height: 1.1;
+}
+
+.hero-name {
+    color: var(--text-primary);
+}
+
+.hero-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.hero-description {
+    max-width: 540px;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Mobile Nav Styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: var(--nav-height);
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--bg-card);
+        /* Opaque for mobile menu readability */
+        width: 100%;
+        height: calc(100vh - var(--nav-height));
+        /* Full height minus header */
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links li {
+        margin: 2.5rem 0;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+/* Section Titles */
+.section-title {
+    display: flex;
+    align-items: center;
+    font-size: clamp(26px, 5vw, 32px);
+    margin-bottom: 40px;
+    color: var(--text-primary);
+}
+
+.section-title::before {
+    content: '';
+    display: block;
+    width: 0px;
+    /* Optional numbering style */
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 300px;
+    height: 1px;
+    background-color: #333;
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .section-title::after {
+        width: 100%;
+        /* Responsive line */
+    }
+}
+
+/* About Section */
+.about-container {
+    max-width: 900px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background-color: rgba(30, 30, 30, 0.7);
+    /* Semi-transparent card */
+    padding: 2rem;
+    border-radius: 8px;
+    transition: transform var(--transition-speed);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+}
+
+.skill-category h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tags span {
+    font-family: var(--font-body);
+    /* Usually code font is nice here too */
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    background-color: rgba(100, 255, 218, 0.1);
+    padding: 5px 12px;
+    border-radius: 15px;
+}
+
+/* Work Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: rgba(30, 30, 30, 0.7);
+    /* Semi-transparent card */
+    padding: 2rem;
+    border-radius: 8px;
+    transition: transform var(--transition-speed);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-7px);
+}
+
+.project-title {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.project-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    /* Mono looks good here too */
+}
+
+.project-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.project-links a {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.project-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Contact Section */
+.contact-container {
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact-title {
+    font-size: clamp(40px, 5vw, 60px);
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.contact-text {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+}
+
+.btn-large {
+    padding: 18px 32px;
+    font-size: 1.1rem;
+}
+
+/* Footer */
+footer {
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}

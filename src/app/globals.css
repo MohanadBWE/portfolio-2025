@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+:root {
+  /* Holographic / Neural Palette */
+  --color-background: #000000;
+  --color-surface: #0a0a0a;
+  --color-primary: #00ff9d;
+  /* Neon Mint */
+  --color-accent: #00b8ff;
+  /* Neon Blue */
+  --color-text: #ffffff;
+  --color-text-muted: #a3a3a3;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+
+  /* Floating Holographic Overlay */
+  .holo-overlay {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 80rem;
+    /* max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    pointer-events: none;
+  }
+
+  .holo-card {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(24px);
+    /* blur-xl */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    /* rounded-2xl */
+    padding: 2rem;
+    pointer-events: auto;
+    transition: all 500ms;
+  }
+
+  .holo-card:hover {
+    border-color: rgba(0, 255, 157, 0.3);
+    /* primary/30 */
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 30px rgba(0, 255, 157, 0.1);
+  }
+
+  .holo-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--color-primary);
+    transition: background-color 150ms;
+    cursor: default;
+  }
+
+  .holo-tag:hover {
+    background-color: rgba(0, 255, 157, 0.1);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+  }
+}
