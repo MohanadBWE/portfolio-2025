@@ -76,11 +76,16 @@ export default function ExperienceTimeline() {
                             onClick={() => setSelectedExp(exp)}
                             className="holo-card flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-0 group cursor-pointer"
                         >
-                            <div className="w-full md:w-auto">
-                                <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-primary transition-colors">{exp.role}</h3>
-                                <p className="text-sm md:text-base text-text-muted font-mono">{exp.company}</p>
+                            {/* Decorative Background Grid/Scanline optional, keeping clean for now */}
+
+                            <div className="w-full md:w-auto z-10">
+                                <div className="flex items-center gap-3 mb-1">
+                                    <span className="text-xs font-mono text-primary/50">{(i + 1).toString().padStart(2, '0')}</span>
+                                    <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-primary transition-colors">{exp.role}</h3>
+                                </div>
+                                <p className="text-sm md:text-base text-text-muted font-mono pl-7 border-l border-white/10">{exp.company}</p>
                             </div>
-                            <span className="text-3xl md:text-4xl font-bold text-white/5 group-hover:text-white/20 transition-colors self-end md:self-auto">{exp.year}</span>
+                            <span className="text-3xl md:text-4xl font-bold text-white/5 group-hover:text-white/20 transition-colors self-end md:self-auto font-mono tracking-tighter">{exp.year}</span>
                         </motion.div>
                     ))}
                 </div>
