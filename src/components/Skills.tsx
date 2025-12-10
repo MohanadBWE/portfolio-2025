@@ -16,7 +16,7 @@ export default function Skills() {
                     whileInView={{ opacity: 1, y: 0 }}
                     className="text-4xl font-bold text-white mb-16"
                 >
-                    System Capabilities
+                    Skills
                 </motion.h2>
 
                 <div className="flex flex-wrap justify-center gap-4">
